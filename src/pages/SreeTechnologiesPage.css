@@ -1,0 +1,87 @@
+.sree-intro__glow {
+  background: radial-gradient(circle, rgba(182, 57, 108, 0.13), transparent 70%);
+}
+
+.sree-video-frame::after {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: inherit;
+  content: '';
+  pointer-events: none;
+}
+
+.sree-heading-accent {
+  color: #b6396c;
+}
+
+.sree-journey-bg {
+  background:
+    radial-gradient(ellipse at 10% 5%, rgba(182, 57, 108, 0.3), transparent 42%),
+    linear-gradient(135deg, #202f4f, #283a5e 55%, #1c2845);
+}
+
+.sree-drawer-overlay {
+  animation: sree-overlay-in 180ms ease-out both;
+}
+
+.sree-drawer-panel {
+  animation: sree-panel-in 240ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+
+.sree-form-field {
+  display: block;
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid #d5dce5;
+  border-radius: 6px;
+  background-color: #fff;
+  padding: 10px 12px;
+  color: #173c5d;
+  font-size: 14px;
+  font-weight: 400;
+  outline: none;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.sree-form-field::placeholder {
+  color: #8793a2;
+}
+
+.sree-form-field:focus {
+  border-color: #b6396c;
+  box-shadow: 0 0 0 3px rgba(182, 57, 108, 0.12);
+}
+
+@keyframes sree-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sree-panel-in {
+  from {
+    transform: translateX(24px);
+    opacity: 0.75;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sree-page *,
+  .sree-page *::before,
+  .sree-page *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

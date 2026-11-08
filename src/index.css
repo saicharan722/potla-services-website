@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  body {
+    font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #283a5e;
+    background-color: #ffffff;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #283a5e;
+    font-family: "Nunito Sans", sans-serif;
+  }
+
+  p {
+    color: #828893;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+}
+
+/* Signature Potla Services Primary Pill Button */
+.potla-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 100px;
+  background-color: #b6396c;
+  color: #ffffff;
+  padding: 13px 36px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  box-shadow: 0px 15px 25px 0px rgba(182, 57, 108, 0.25);
+  transition: all 0.35s ease;
+  border: 2px solid #b6396c;
+  cursor: pointer;
+}
+
+.potla-btn-primary:hover {
+  background-color: #ffffff;
+  color: #b6396c;
+  border-color: #b6396c;
+  transform: translateY(-2px);
+}
+
+/* Signature Card Shadow from Potla Services style.css */
+.potla-card-shadow {
+  box-shadow: 7px 5px 30px rgba(72, 73, 121, 0.14);
+}
+
+/* Subtle bounce animation for rocket & fun-fact icons */
+@keyframes movebounce {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-movebounce {
+  animation: movebounce 3.2s linear infinite;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 400ms ease-in-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 300ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Read more link underline accent */
+.potla-read-more {
+  position: relative;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 700;
+  color: #283a5e;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.potla-read-more::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 42px;
+  height: 2px;
+  background-color: #b6396c;
+  transition: width 0.3s ease;
+}
+
+.potla-read-more:hover {
+  color: #b6396c;
+}
+
+.potla-read-more:hover::after {
+  width: 100%;
+}
