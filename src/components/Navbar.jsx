@@ -19,6 +19,8 @@ export default function Navbar({
 }) {
   const [isSticky, setIsSticky] = useState(false);
   const [companiesDropdownOpen, setCompaniesDropdownOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileCompaniesOpen, setMobileCompaniesOpen] = useState(false);
   const [introComplete, setIntroComplete] = useState(false);
 
   useEffect(() => {
@@ -42,6 +44,8 @@ export default function Navbar({
 
   const handleGo = (page) => {
     setCompaniesDropdownOpen(false);
+    setMobileCompaniesOpen(false);
+    setMobileMenuOpen(false);
     onNavigate(page);
   };
 
@@ -197,16 +201,127 @@ export default function Navbar({
           <div className="flex items-center gap-3">
             <button
               type="button"
+              onClick={() => setMobileMenuOpen((open) => !open)}
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation"
+              className="flex h-11 w-13 cursor-pointer items-center justify-center border border-[#b6396c] text-[#df8057] transition-colors hover:bg-[#b6396c] hover:text-white lg:hidden"
+            >
+              <Menu className="h-5 w-5" />
+            </button>
+            <button
+              type="button"
               onClick={onOpenRightDrawer}
               aria-label="Open company information"
               aria-expanded={rightDrawerOpen}
               aria-controls="company-info-drawer"
-              className="flex h-11 w-13 cursor-pointer items-center justify-center border border-[#b6396c] text-[#df8057] transition-colors hover:bg-[#b6396c] hover:text-white"
+              className="hidden h-11 w-13 cursor-pointer items-center justify-center border border-[#b6396c] text-[#df8057] transition-colors hover:bg-[#b6396c] hover:text-white lg:flex"
             >
               <Menu className="h-5 w-5" />
             </button>
           </div>
         </div>
+
+        {mobileMenuOpen && (
+          <div
+            id="mobile-navigation"
+            className="mt-3 border-t border-[#eee7ea] py-2 lg:hidden"
+          >
+            <button
+              type="button"
+              onClick={() => handleGo('home')}
+              aria-current={currentPage === 'home' ? 'page' : undefined}
+              className={`block w-full cursor-pointer px-2 py-2.5 text-left text-[15px] font-medium ${
+                currentPage === 'home' ? 'text-[#b6396c]' : 'text-[#283a5e]'
+              }`}
+            >
+              Home
+            </button>
+            <button
+              type="button"
+              onClick={() => handleGo('about')}
+              aria-current={currentPage === 'about' ? 'page' : undefined}
+              className={`block w-full cursor-pointer px-2 py-2.5 text-left text-[15px] font-medium ${
+                currentPage === 'about' ? 'text-[#b6396c]' : 'text-[#283a5e]'
+              }`}
+            >
+              About
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobileCompaniesOpen((open) => !open)}
+              aria-expanded={mobileCompaniesOpen}
+              className={`flex w-full cursor-pointer items-center justify-between px-2 py-2.5 text-left text-[15px] font-medium ${
+                isCompanyPage ? 'text-[#b6396c]' : 'text-[#283a5e]'
+              }`}
+            >
+              <span>Companies</span>
+              <ChevronDown
+                className={`h-4 w-4 transition-transform duration-200 ${
+                  mobileCompaniesOpen ? 'rotate-180' : ''
+                }`}
+              />
+            </button>
+            {mobileCompaniesOpen && (
+              <div className="border-l border-[#eee7ea] pl-3">
+                {COMPANY_LINKS.map((item) => (
+                  <button
+                    key={item.page}
+                    type="button"
+                    onClick={() => handleGo(item.page)}
+                    aria-current={currentPage === item.page ? 'page' : undefined}
+                    className={`block w-full cursor-pointer px-2 py-2 text-left text-sm ${
+                      currentPage === item.page
+                        ? 'text-[#b6396c]'
+                        : 'text-[#283a5e]'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            )}
+            <button
+              type="button"
+              onClick={() => handleGo('careers')}
+              aria-current={currentPage === 'careers' ? 'page' : undefined}
+              className={`block w-full cursor-pointer px-2 py-2.5 text-left text-[15px] font-medium ${
+                currentPage === 'careers' ? 'text-[#b6396c]' : 'text-[#283a5e]'
+              }`}
+            >
+              Careers
+            </button>
+            <button
+              type="button"
+              onClick={() => handleGo('portfolio')}
+              aria-current={currentPage === 'portfolio' ? 'page' : undefined}
+              className={`block w-full cursor-pointer px-2 py-2.5 text-left text-[15px] font-medium ${
+                currentPage === 'portfolio' ? 'text-[#b6396c]' : 'text-[#283a5e]'
+              }`}
+            >
+              Portfolio
+            </button>
+            <button
+              type="button"
+              onClick={() => handleGo('contact')}
+              aria-current={currentPage === 'contact' ? 'page' : undefined}
+              className={`block w-full cursor-pointer px-2 py-2.5 text-left text-[15px] font-medium ${
+                currentPage === 'contact' ? 'text-[#b6396c]' : 'text-[#283a5e]'
+              }`}
+            >
+              Contact
+            </button>
+            <button
+              type="button"
+              onClick={onOpenRightDrawer}
+              aria-expanded={rightDrawerOpen}
+              aria-controls="company-info-drawer"
+              className="mt-1 block w-full cursor-pointer border-t border-[#eee7ea] px-2 py-3 text-left text-sm font-medium text-[#283a5e]"
+            >
+              Company information
+            </button>
+          </div>
+        )}
 
       </div>
     </nav>

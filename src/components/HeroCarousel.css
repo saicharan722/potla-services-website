@@ -390,15 +390,15 @@
 
 @media (max-width: 760px) {
   .hero-carousel {
-    min-height: 700px;
+    min-height: 620px;
   }
 
   .hero-carousel__image-layer {
     top: auto;
     right: 0;
-    bottom: 62px;
+    bottom: 58px;
     left: 0;
-    height: 235px;
+    height: 180px;
   }
 
   .hero-carousel__image-layer img {
@@ -412,9 +412,9 @@
   }
 
   .hero-carousel__content-wrap {
-    min-height: 700px;
+    min-height: 620px;
     align-content: start;
-    padding: 62px 28px 300px;
+    padding: 42px 24px 225px;
   }
 
   .hero-carousel__content {
@@ -471,17 +471,17 @@
 
 @media (max-width: 420px) {
   .hero-carousel {
-    min-height: 740px;
+    min-height: 640px;
   }
 
   .hero-carousel__content-wrap {
-    min-height: 740px;
-    padding-top: 58px;
-    padding-bottom: 290px;
+    min-height: 640px;
+    padding-top: 40px;
+    padding-bottom: 220px;
   }
 
   .hero-carousel__image-layer {
-    height: 225px;
+    height: 170px;
   }
 
   .hero-carousel__title {
